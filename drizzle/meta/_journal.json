@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1778757871608,
+      "tag": "0000_stale_black_bird",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1779028060774,
+      "tag": "0001_overjoyed_talon",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1779110960751,
+      "tag": "0002_cuddly_carlie_cooper",
+      "breakpoints": true
+    }
+  ]
+}

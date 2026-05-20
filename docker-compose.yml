@@ -1,0 +1,50 @@
+services:
+  # WhatsApp HTTP API (Waha)
+  waha:
+    image: devlikeapro/waha:latest
+    platform: linux/amd64
+    container_name: akka-waha
+    restart: unless-stopped
+    ports:
+      - "3001:3000"
+    environment:
+      - WAHA_DASHBOARD_ENABLED=true
+      - WAHA_DASHBOARD_USERNAME=admin
+      - WAHA_DASHBOARD_PASSWORD=
+      - WAHA_DASHBOARD_NO_PASSWORD=true
+      - WAHA_WEBHOOK_URL=http://host.docker.internal:3000/webhook
+      - WAHA_SESSION_WEBHOOK_URL=http://host.docker.internal:3000/webhook
+      - WAHA_WEBHOOK_EVENTS=message
+      - WAHA_SWAGGER_ENABLED=true
+      # Static API key for Akka health checks
+      - WAHA_API_KEY=waha-api-key-2024
+      - WAHA_NO_API_KEY=false
+      # Use NOWEB engine for better compatibility (no browser needed)
+      - WHATSAPP_DEFAULT_ENGINE=NOWEB
+      # Enable NOWEB store for chat history
+      - WHATSAPP_NOWEB_STORE_ENABLED=true
+      - WHATSAPP_NOWEB_STORE_FULL_SYNC=false
+      # Auto-start session on container restart
+      - WHATSAPP_START_SESSION=default
+      - WHATSAPP_RESTART_ALL_SESSIONS=true
+      # Additional Chromium flags for stability
+      - PUPPETEER_ARGS=--no-sandbox,--disable-setuid-sandbox,--disable-dev-shm-usage,--disable-gpu
+    volumes:
+      - ./data/waha:/app/data
+      - ./data/waha/sessions:/app/.sessions
+    # Increase shared memory size for Chromium
+    shm_size: 2gb
+    # Add sys_admin capability for Chromium
+    cap_add:
+      - SYS_ADMIN
+
+  # Akka Platform (run separately with bun)
+  # akka:
+  #   build: .
+  #   ports:
+  #     - "3000:3000"
+  #   environment:
+  #     - PORT=3000
+  #     - WAHA_BASE_URL=http://waha:3000
+  #   volumes:
+  #     - ./data:/app/data

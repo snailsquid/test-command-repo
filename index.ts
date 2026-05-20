@@ -1,1 +1,2 @@
-console.log("Hello via Bun!");
+// Re-export from src
+export { default } from "./src/server";

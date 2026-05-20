@@ -40,5 +40,13 @@ bun.lockb
 !.vscode/launch.json
 !.vscode/extensions.json
 
+# WAHA WhatsApp sessions (contains credentials and chat history)
+data/
+data/waha/sessions/
+
+# test artifacts
+test-results/
+*.db
+
 # Finder (MacOS) folder config
 .DS_Store

@@ -1,0 +1,17 @@
+version: "1.0"
+commands:
+  - slug: echo
+    name: Echo
+    description: Echoes back your message
+    usage: ".echo [text]"
+    entryPoint: src/demo.ts
+  - slug: remind-me
+    name: "Remind Me"
+    description: Set a reminder with a delay
+    usage: ".remind me [duration] [message]"
+    entryPoint: src/demo.ts
+  - slug: translate
+    name: Translate
+    description: Translate text (demo)
+    usage: ".translate [text] [language]"
+    entryPoint: src/demo.ts

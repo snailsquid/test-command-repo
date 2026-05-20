@@ -1,0 +1,7 @@
+{
+  "name": "@akka/demo-commands",
+  "version": "1.0.0",
+  "description": "Demo commands for Akka platform testing",
+  "main": "src/demo.ts",
+  "types": "src/types.ts"
+}
